@@ -45,4 +45,59 @@ public:
         }
         return res;
     }
+     
+    // soulution 2, use hash_map, not finished yet 
+    typedef unordered_map<int, vector<vector<int>>> MAP;
+    vector<vector<int>> fourSum_2(vector<int> &num, int target) {
+        vector<vector<int>> res;
+        MAP map;
+        // set<int> twoSum;
+        int n = num.size();
+        if (n < 4) {
+            return res;
+        }
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = i + 1; j < n; j++) {
+                int sum = num[i] + num[j];
+                // twoSum.insert(sum);
+                vector<int> index_value;
+                index_value.push_back(i);
+                index_value.push_back(j);
+                // index_value.push_back(num[i]);
+                // index_value.push_back(num[j]);
+                map[sum].push_back(index_value);
+            }
+        }
+        
+        MAP::iterator mapIt;
+        MAP::iterator it = map.begin();
+        while (it != map.end()){
+            mapIt = map.find(target - it->first);
+            if (mapIt == map.end()) {
+                continue;
+                it++;
+            }
+            vector<vector<int>> firstPairs = it->second;
+            vector<vector<int>> secondPairs = mapIt->second;
+            // if (*it != target - *it) {
+            //     twoSum.erase(target - *it);
+            // }
+            for (vector<vector<int>>::iterator i = firstPairs.begin(); i != firstPairs.end(); ++i) {
+                for (vector<vector<int>>::iterator j = secondPairs.begin(); j != secondPairs.end(); ++j) {
+                    if ((*i)[0] != (*j)[0] && (*i)[1] != (*j)[1]
+                    && (*i)[0] != (*j)[1] && (*i)[1] != (*j)[0]) {
+                        vector<int> quadruplet;
+                        quadruplet.push_back((*i)[0]);
+                        quadruplet.push_back((*i)[1]);
+                        quadruplet.push_back((*j)[0]);
+                        quadruplet.push_back((*j)[1]);
+                        sort(quadruplet.begin(), quadruplet.end());
+                        res.push_back(quadruplet);
+                    }
+                }
+            }
+            it = map.erase(it);
+        }
+        return res;
+    }
 };
