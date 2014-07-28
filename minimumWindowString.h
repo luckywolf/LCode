@@ -20,23 +20,22 @@ public:
             }
             found[S[right]]++;
             // move left pointer
-            if (counter != m) {
-                continue;
+            if (counter == m) {
+                for (; left < right; ++left) {
+                    if (need[S[left]] == 0) {
+                        continue;
+                    }
+                    if (found[S[left]] <= need[S[left]]) {
+                        break;
+                    }
+                    found[S[left]]--;
+                }
+                // update result
+                if (right - left < minEnd - minStart) {
+                    minStart = left;
+                    minEnd = right;
+                }
             }
-            for (; left < right; ++left) {
-                if (need[S[left]] == 0) {
-                    continue;
-                }
-                if (found[S[left]] <= need[S[left]]) {
-                    break;
-                }
-                found[S[left]]--;
-              }
-              // update result
-             if (right - left < minEnd - minStart) {
-                 minStart = left;
-                 minEnd = right;
-              }
         }
         string res = (minStart == -1) ? "" : S.substr(minStart, minEnd - minStart + 1);
         return res;
