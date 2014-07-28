@@ -33,4 +33,39 @@ public:
             A[i--] = B[k--];
         }
     }
+    
+        // second round
+    void merge_3(int A[], int m, int B[], int n) {
+        assert(m >= 0 && n >= 0);
+        if (n == 0) {
+            return;
+        }
+        int i = m - 1, j = n - 1, k = m + n - 1;
+        while (i >= 0 && j >= 0) {
+            if (A[i] > B[j]) {
+                A[k--] = A[i--];
+            } else {
+                A[k--] = B[j--];
+            }
+        }
+        while (j >= 0) {
+            A[k--] = B[j--];
+        }
+    }
+    
+    // third round
+    void merge(int A[], int m, int B[], int n) {
+        assert(m >= 0 && n >= 0);
+        if (n == 0) {
+            return;
+        }
+        int i = m - 1, j = n - 1, k = m + n - 1;
+        while (j >= 0) {
+            if (i >= 0 && A[i] > B[j]) {
+                A[k--] = A[i--];
+            } else {
+                A[k--] = B[j--];
+            }
+        }
+    }
 };
