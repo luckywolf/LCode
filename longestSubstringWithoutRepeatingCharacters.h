@@ -28,7 +28,7 @@ public:
         bool exists[256] = {false};
         int head = 0, tail = 0, n = s.size();
         int res = 0;
-        while (tail < n && head + res < n) {
+        while (tail < n && head + resv- 1 < n) {
             if (!exists[s[tail]]) {
                 exists[s[tail++]] = true;
             } else {
