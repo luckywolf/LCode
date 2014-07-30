@@ -18,8 +18,8 @@ public:
             slow = slow->next;
             fast = fast->next->next;
         }
-        ListNode *temp = slow, *second = slow->next;
-        temp->next = NULL;
+        ListNode *second = slow->next;
+        slow->next = NULL;
         return merge(sortList(head), sortList(second));
     }
     
