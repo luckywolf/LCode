@@ -22,6 +22,11 @@ public:
         return matches[m-1][n-1];
     }
 // Natual recursive, just for fun, TLE
+/* 每次递归调用f(S, T)使用如下方法处理（假设S长度为n，T长度为m）：
+    找出T[0]在S中的第一个位置i，则f(S, T) = f(S[i+1:n], T[1:m])
+    则复杂度为f(n) = n*f(n-1) = n*(n-1)*f(n-2) = ... = n!
+    Large Judge时容易TLE
+*/
     int numDistinct_2(string S, string T) {
         int m = S.size(), n = T.size();
         if( n == 0){
@@ -32,7 +37,7 @@ public:
             int res = 0;
             for(int i = 0; i < m; ++i){
                 if(S[i] == T[0]){
-                    res += numDistinct(S.substr(i+1, m-i-1), T.substr(1, n-1));
+                    res += numDistinct(S.substr(i+1, m-1), T.substr(1, n-1));
                 }
             }
             return res;
