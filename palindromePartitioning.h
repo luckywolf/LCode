@@ -32,11 +32,11 @@ public:
             return;
         }
         for (int i = start; i < s.size(); ++i) {
-            output.push_back(s.substr(start, i - start + 1));
             if (dp[start][i]) {
+                output.push_back(s.substr(start, i - start + 1));
                 partitionRe(s, i+1, dp, output, result);
+                output.pop_back();
             }
-            output.pop_back();
         }
     }
 };
