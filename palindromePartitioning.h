@@ -4,6 +4,7 @@ public:
         int n = s.size();
         vector<bool> temp(n, false);
         vector<vector<bool>> dp(n, temp);
+/* O (n^3)
         for (int i = 0; i < n; ++i) {
             for (int j = i; j < n; ++j) {
                 int start = i, end = j;
@@ -19,6 +20,21 @@ public:
                 }
             }
         }
+*/
+// DP, O(n^2)
+        for (int i = 0; i < n; ++i){
+            for (int j = 0; j < n; ++j){
+                dp[i][j] = false;
+            }
+        }
+        for (int i = n-1; i >= 0; i--) {
+            for (int j = i; j < n; j++) {
+                if (s[i] == s[j] && (j-i < 2 || dp[i+1][j-1])) {
+                    dp[i][j] = true;
+                }
+            }
+        } 
+
         vector<string> output;
         vector<vector<string>> res;
         partitionRe(s, 0, dp, output, res);
