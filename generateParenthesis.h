@@ -24,4 +24,21 @@ public:
         generateParenthesisRe(left, right-1, output, result);
         output.pop_back();
     }
+    
+    void generateParenthesisRe_1(int left, int right, string &output, vector<string> &result) {
+        if (right == 0) {
+            result.push_back(output);
+            return;
+        }
+        if (left) {
+            output.push_back('(');
+            generateParenthesisRe(left-1, right, output, result);
+            output.pop_back();
+        }
+        if (right > left) {
+            output.push_back(')');
+            generateParenthesisRe(left, right-1, output, result);
+            output.pop_back();
+        }
+    }
 };
