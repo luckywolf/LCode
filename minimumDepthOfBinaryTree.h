@@ -14,13 +14,14 @@ public:
         if (!root) {
             return 0;
         }
-        if (!root->left && !root->right) {
-            return 1;
-        }
-        if (!root->left) {
+        // redundant
+        // if (!root->left && !root->right) {
+        //     return 1;
+        // }
+        if (!root->left) { // not redundent
             return 1 + minDepth_1(root->right);
         }
-        if (!root->right) {
+        if (!root->right) { // not redundent
             return 1 + minDepth_1(root->left);
         }
         return 1 + min(minDepth_1(root->left), minDepth_1(root->right));
