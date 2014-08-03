@@ -24,7 +24,7 @@ public:
             if (sum == root->val) {
                 output.push_back(root->val);
                 result.push_back(output);
-                output.pop_backa();
+                output.pop_backa(); // important, be cautious
             }
             return;
         }
