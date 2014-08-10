@@ -35,7 +35,7 @@ public:
     }
     
     // optimized and without the advanced pointer
-    char *strStr(char *haystack, char *needle) {
+    char *strStr_2(char *haystack, char *needle) {
         while (haystack != '\0') {
             char *h = haystack, *n = needle;
             while (*n != '\0' && *h == *n) {
@@ -52,4 +52,49 @@ public:
         }
         return NULL;
     }
+    
+    
+    // KMP
+    // http://chaoswork.com/blog/2011/06/14/kmp%E7%AE%97%E6%B3%95%E5%B0%8F%E7%BB%93/
+    // http://n00tc0d3r.blogspot.com/2013/03/implement-strstr.html?view=flipcard
+    void buildNextTable(char *pattern, int* next, int length) {  
+        next[0] = -1;
+        for (int i = 2; i <= length; ++i) {  
+            int j = next[i-1];  
+            while (j > -1 && pattern[i - 1] != pattern[j]) {
+                j = next[j];
+            }
+            if (j > -1) {
+                next[i] = j + 1;  
+            }
+        }
+    }  
+   
+    char *strStr(char *haystack, char *needle)  {
+        int n = strlen(haystack);
+        int m = strlen(needle);
+        if (m == 0) {
+            return haystack; 
+        }
+        if (n < m) { 
+            return NULL; 
+        }
+        int *next = new int[m + 1];
+        memset(next, 0, sizeof(next));
+        buildNextTable(needle, next, m);  
+        int offset = 0, start = 0;  
+        while (offset < n) {  
+            if (haystack[offset] == needle[start]) {  
+                ++offset;  
+                if (++start == m) {  
+                    return haystack + offset;  
+                }  
+            } else if (start > 0) {  
+                start = next[start];  
+            } else {  
+                ++offset;  
+            }  
+        }  
+        return NULL;  
+    }   
 };
