@@ -1,24 +1,55 @@
 class Solution {
 public:
 
-//recursive
-    bool isMatch(const char *s, const char *p) {
+// recursive
+// http://leetcode.com/2011/09/regular-expression-matching.html
+    bool isMatch_1(const char *s, const char *p) {
         if (*p == '\0') {
             return  *s == '\0';
         }
         if (*(p+1) == '*') {
             while ((*p == *s || *p == '.') && *s != '\0') {
-                if (isMatch(s, p+2)) {
+                if (isMatch_1(s, p+2)) {
                     return true;
                 }
                 s++;
             }
-            return isMatch(s, p+2);
+            return isMatch_1(s, p+2);
         }
         
         if (*s == '\0') {
             return false;
         }
-        return (*p == *s || *p == '.') && isMatch(s+1, p+1);
+        return (*p == *s || *p == '.') && isMatch_1(s+1, p+1);
     }
+
+// solution 2, recursive
+// http://n00tc0d3r.blogspot.com/2013/05/regular-expression-matching.html?view=flipcard
+    bool isMatch(const char *s, const char *p) {    
+     if (!s) {
+         return !p;
+     }
+     if (*p == '\0') {
+         return *s == '\0';
+     }
+   
+     // next char is not '*': do current char match?  
+     if (*(p+1) == '\0' || *(p+1) != '*') {  
+       if (*s == '\0') {
+           return false;
+       }
+       return ((*p == '.' || *s == *p)  && isMatch(++s, ++p));  
+   }  
+   
+   // next char is '*'  
+   // current char match, zero or more repeats
+   while (*s != '\0' && (*p == '.' || *s == *p)) {  
+     if (isMatch(s, p+2)) {
+         return true;
+     }
+     s++;  
+   }  
+   // zero  
+   return isMatch(s, p+2);  
+   } 
 };
