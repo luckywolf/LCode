@@ -1,4 +1,9 @@
 /*
+https://oj.leetcode.com/problems/maximal-rectangle/
+
+Given a 2D binary matrix filled with 0's and 1's, find the largest rectangle containing all ones and return its area.
+*/
+/*
  Solution: 1. dp. (72 milli secs for the large).
  a) dp[i][j] records the number of consecutive '1' on the left and up of the element matrix[i][j].
  b) For each element(i,j), calculate the area of rectangle including the element itself.

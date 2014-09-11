@@ -1,3 +1,10 @@
+/*
+https://oj.leetcode.com/problems/multiply-strings/
+
+Given two numbers represented as strings, return multiplication of the numbers as a string.
+
+Note: The numbers can be arbitrarily large and are non-negative.
+*/
 class Solution {
 public:
 // the result is at most m+n long. e.g 99 * 99 < 10,000

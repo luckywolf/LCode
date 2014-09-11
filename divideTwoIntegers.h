@@ -1,3 +1,8 @@
+/*
+https://oj.leetcode.com/problems/divide-two-integers/
+
+Divide two integers without using multiplication, division and mod operator.
+*/
 class Solution {
 public:
 // use long long and <<

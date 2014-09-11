@@ -1,3 +1,14 @@
+/*
+https://oj.leetcode.com/problems/valid-sudoku/
+
+Determine if a Sudoku is valid, according to: Sudoku Puzzles - The Rules.
+
+The Sudoku board could be partially filled, where empty cells are filled with the character '.'.
+
+
+A partially filled sudoku which is valid.
+
+*/
 class Solution {
 public:
     bool isValidSudoku(vector<vector<char> > &board) {

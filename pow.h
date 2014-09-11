@@ -1,3 +1,8 @@
+/*
+https://oj.leetcode.com/problems/powx-n/
+
+Implement pow(x, n).
+*/
 class Solution {
 public:
 // recursive, O(lgn)
