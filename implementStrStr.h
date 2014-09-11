@@ -80,7 +80,9 @@ public:
             return NULL; 
         }
         int *next = new int[m + 1];
-        memset(next, 0, sizeof(next));
+        // memset(myarray, 0, sizeof(myarray)); // for automatically-allocated arrays
+        // memset(myarray, 0, N*sizeof(*myarray)); // for heap-allocated arrays, where N is the number of elements
+        memset(next, 0, (m+1) * sizeof(next));
         buildNextTable(needle, next, m);  
         int offset = 0, start = 0;  
         while (offset < n) {  
