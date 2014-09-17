@@ -34,14 +34,14 @@ public:
                     l++;
                 } else if (sum > twoSum) {
                     r--;
-                } else {
+                } else { Be cautious, possible bugs here, check duplicates only when a match is found.
                     vector<int> triplet;
                     triplet.push_back(num[i]);
                     triplet.push_back(num[l]);
                     triplet.push_back(num[r]);
                     res.push_back(triplet);
-                    l++;
-                    r--;
+                    l++;   // Be cautious, possible bugs here
+                    r--;   // Be cautious, possible bugs here
                     while (l < r && num[l] == num[l-1]) {
                         l++; // avoid duplicates
                     }
