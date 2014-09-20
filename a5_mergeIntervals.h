@@ -66,4 +66,22 @@ public:
         res.push_back(last);
         return res;
     }
+
+// Modify input parameters
+vector<Interval> merge(vector<Interval> &intervals) {
+        if (intervals.empty()) {
+            return intervals;
+        }
+        sort(intervals.begin(), intervals.end(), compareInt);
+        int last  = 0;
+        for(int i = 1; i < intervals.size(); ++i) {
+            if (intervals[i].start > intervals[last].end) {
+                intervals[++last] = intervals[i]; // be cautious, possible bugs
+            } else {
+                intervals[last].end = max(intervals[last].end, intervals[i].end);
+            }
+        }
+        intervals.resize(last+1); // be cautious, possible bugs
+        return intervals;
+    }
 };

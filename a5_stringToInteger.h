@@ -68,13 +68,14 @@ public:
             positive = false;
         }
         while (isdigit(*str)) {
-            if (INT_MAX / 10 < res || INT_MAX / 10 == res && INT_MAX % 10 < *str - '0') {
-                return positive ? INT_MAX : INT_MIN;
+            if (INT_MAX / 10 < res || 
+                INT_MAX / 10 == res && INT_MAX % 10 < *str - '0') { // Be cautious, possible bugs
+                return positive ? INT_MAX : INT_MIN;  
             }
             res = res * 10 + *str - '0';
-            str++;
+            str++; // Be cautious, possible bugs
         }
-        return positive ? res : -res;
+        return positive ? res : -res; 
     }
 
 };

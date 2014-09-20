@@ -39,7 +39,7 @@ public:
                 res.push_back(intervals[i]);
             } else if (newInterval.end < intervals[i].start) {
                 res.push_back(newInterval);
-                res.push_back(intervals[i]);
+                res.push_back(intervals[i]); // Be cautious here, possible bugs
                 inserted = true;
             } else {
                 newInterval.start = min(newInterval.start, intervals[i].start);
