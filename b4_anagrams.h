@@ -22,7 +22,7 @@ public:
                     res.push_back(strs[dic[key]]);
                     dic[key] = -1;
                 }
-                res.push_back(strs[i]);
+                res.push_back(strs[i]); // Be cautious here, need to store it even if dic[key] != -1
             } else {
                 dic[key] = i;
             }

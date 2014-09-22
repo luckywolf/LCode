@@ -21,10 +21,10 @@ public:
         while (k >= 0) {
             int sum = carry;
             if (m >= 0) {
-                sum += a[m--] - '0';
+                sum += a[m--] - '0'; // Concise code
             }
             if (n >= 0) {
-                sum += b[n--] - '0';
+                sum += b[n--] - '0'; // Concise code
             }
             carry = sum / 2;
             sum %= 2;

@@ -22,6 +22,10 @@ All words contain only lowercase alphabetic characters.
 class Solution {
 public:
 // BFS
+/*
+for word length k, and searching in dictionary takes O(1), and the depth of trasation is d
+time complexity is O((k*26)^d), space complexity is O((k*26)^d)
+*/
     int ladderLength(string start, string end, unordered_set<string> &dict) {
         assert(start != end);
         assert(start.size() > 0);

@@ -23,7 +23,7 @@ public:
         // remove leading, trailing and extra spaces
         int length = 0;
         for (int i = 0; i < s.size(); ++i) {
-            if (s[i] == ' ' && (i == 0 || s[i-1] == ' ')) {
+            if (s[i] == ' ' && (i == 0 || s[i-1] == ' ')) { // Concise code
                 continue;
             }
             s[length++] = s[i];
@@ -31,7 +31,7 @@ public:
         if (length == 0) {
             s = "";
             return;
-        } else if (s[length-1] == ' ') {
+        } else if (s[length-1] == ' ') { // Concise code
             length--;
         }
         s.resize(length);
@@ -42,7 +42,7 @@ public:
         }
         // reverse each word
         start = 0, end = 0;
-        while (start < length) {
+        while (start < length) { // Be cautious, possible bugs, if use end < length, the last word cannot be reversed
             while (s[end] != ' ' && end < length) {
                 end++;
             }

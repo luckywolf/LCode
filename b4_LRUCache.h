@@ -77,11 +77,13 @@ public:
             MoveToHead(key);
         } else {
              if (m_cacheList.size() >= m_capacity) {
+                // list<CacheEntry>::iterator it = --_cacheList.end();
+                // _cacheMap.erase(it->key);
                  m_cacheMap.erase(m_cacheList.back().key);
-                 m_cacheList.pop_back();
+                 m_cacheList.pop_back(); // be cautious of std::list API 
              }
-             CacheEntry newEntry(key, value);
-             m_cacheList.push_front(newEntry);
+             CacheEntry newEntry(key, value); // be cautious of new object (in stack memory)
+             m_cacheList.push_front(newEntry); // be cautious of std::list API
              m_cacheMap[key] = m_cacheList.begin();
         }
     }
@@ -94,7 +96,7 @@ private:
     void MoveToHead(int key) {
         CacheEntry updateEntry = *m_cacheMap[key];
         m_cacheList.erase(m_cacheMap[key]);
-        m_cacheList.push_front(updateEntry);
+        m_cacheList.push_front(updateEntry); // be cautious of std::list API
         m_cacheMap[key] = m_cacheList.begin();
     }
 };
