@@ -28,13 +28,13 @@ public:
         }
         int leftHeight = 0, rightHeight = 0;
         if (!isBalancedRe(root->left, leftHeight)){
-            return false;
+            return false; // Concise code, return early and don't care about height
         }
         if (!isBalancedRe(root->right, rightHeight)) {
-            return false;
+            return false; // Concise code, return early and don't care about height
         }
         if (abs(leftHeight - rightHeight) > 1) {
-            return false;
+            return false; // Concise code, return early and don't care about height
         }
         height = 1 + max(leftHeight, rightHeight);
         return true;
