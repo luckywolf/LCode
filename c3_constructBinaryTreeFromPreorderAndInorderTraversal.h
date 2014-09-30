@@ -36,8 +36,9 @@ public:
         }
         int rootIndex = iMap[preorder[pstart]];
         TreeNode *root = new TreeNode(preorder[pstart]);
-        root->left = buildTreeRe_1(preorder, inorder, iMap, pstart+1, istart, rootIndex - istart);
-        root->right = buildTreeRe_1(preorder, inorder, iMap, pstart+rootIndex-istart+1, rootIndex+1, size-(rootIndex-istart)-1);
+        int left_size = rootIndex - istart;
+        root->left = buildTreeRe_1(preorder, inorder, iMap, pstart+1, istart, left_size);
+        root->right = buildTreeRe_1(preorder, inorder, iMap, pstart+left_size+1, rootIndex+1, size-left_size-1);
         return root;
     }
     

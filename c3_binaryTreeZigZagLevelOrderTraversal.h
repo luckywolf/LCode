@@ -44,12 +44,12 @@ public:
             TreeNode *node = q.front();
             q.pop();
             if (!node) {
-                if (!left2right) {
+                if (!left2right) { 
                     reverse(level.begin(), level.end());
                 }
                 res.push_back(level);
-                level.clear();
-                left2right = !left2right;
+                level.clear();  // be careful, possible bugs
+                left2right = !left2right; // concise code
                 if (q.empty()) {
                     break;
                 } else {

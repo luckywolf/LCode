@@ -30,7 +30,7 @@ public:
         if (S.size() == 0) {
             return res;
         }
-        sort(S.begin(), S.end());
+        // sort(S.begin(), S.end()); // not necessary if there is no duplicates
         subsetsRe_1(S, 0, output, res);
         return res;
     }

@@ -117,14 +117,14 @@ public:
             return NULL;
         }
         if (visited.find(node) != visited.end()) {
-            return visited[node];
+            return visited[node]; // concise code
         }
         UndirectedGraphNode *newNode = new UndirectedGraphNode(node->label);
         visited[node] = newNode;
         for (int i = 0; i < node->neighbors.size(); ++i) {
-            newNode->neighbors.push_back(cloneGraphRe(node->neighbors[i], visited));
+            newNode->neighbors.push_back(cloneGraphRe(node->neighbors[i], visited)); // concise code
         }
-        return newNode;
+        return newNode; // concise code
     }
     
 };

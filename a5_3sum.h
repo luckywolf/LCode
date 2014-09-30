@@ -34,7 +34,7 @@ public:
                     l++;
                 } else if (sum > twoSum) {
                     r--;
-                } else { Be cautious, possible bugs here, check duplicates only when a match is found.
+                } else { // Be cautious, possible bugs here, check duplicates only when a match is found.
                     vector<int> triplet;
                     triplet.push_back(num[i]);
                     triplet.push_back(num[l]);
