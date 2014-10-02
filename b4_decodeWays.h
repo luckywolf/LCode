@@ -42,7 +42,33 @@ public:
         }
     }
 
-// DP
+// optimized brute force
+    int numDecodings_2(string s) {
+        int res = 0;
+        if (!s.empty()) {
+            numDecodingsRe_2(s, 0, res);
+        }
+        return res;
+    }
+    
+    void numDecodingsRe_@(string &s, int start, int &res) {
+        if (start == s.size()) {
+            res++;
+            return;
+        }
+        if (s[0] == '0') {
+            return;
+        }
+        numDecodingsRe_2(s, start+1, res);
+        if (start < s.size()-1) {
+            int temp = (s[start] - '0') * 10 + s[start+1] - '0';
+            if (temp <= 26) {
+                numDecodingsRe_2(s, start+2, res);
+            }
+        }
+    }
+
+// DP, dp[i]: number of Decodings for substring starting from s[i]
     int numDecodings(string s) {
         if (s.empty()) {
             return 0;

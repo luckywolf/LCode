@@ -34,6 +34,7 @@ public:
         output.pop_back();
     }
     
+
     void generateParenthesisRe_1(int left, int right, string &output, vector<string> &result) {
         if (right == 0) {
             result.push_back(output);
@@ -50,4 +51,21 @@ public:
             output.pop_back();
         }
     }
+
+/* output for generateParenthesisRe_1:
+(((())))
+((()()))
+((())())
+((()))()
+(()(()))
+(()()())
+(()())()
+(())(())
+(())()()
+()((()))
+()(()())
+()(())()
+()()(())
+()()()()
+*/
 };
