@@ -51,7 +51,7 @@ public:
         return res;
     }
     
-    void numDecodingsRe_@(string &s, int start, int &res) {
+    void numDecodingsRe_2(string &s, int start, int &res) {
         if (start == s.size()) {
             res++;
             return;
