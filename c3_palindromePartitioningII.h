@@ -17,7 +17,7 @@ public:
     int minCut(string s) {
         int n = s.size();
         int minCut[n];
-        for (int i = 0; i <= n; ++i) {
+        for (int i = 0; i < n; ++i) {
             minCut[i] = n-1-i;
         }
         bool isP[n][n];

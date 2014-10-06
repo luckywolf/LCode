@@ -15,7 +15,7 @@ class Solution {
 public:
     vector<int> searchRange(int A[], int n, int target) {
         vector<int> res(2, -1);
-        int lower =  -1;
+        int lower =  -1, upper = -1;
         int start = 0, end = n - 1;
         while (start <= end) {
             int mid = start + (end - start) / 2;
@@ -33,7 +33,6 @@ public:
         } else {
             res[0] = lower;
         }
-        int upper = lower;
         start = 0, end = n - 1;
         while (start <= end) {
             int mid = start + (end - start) / 2;

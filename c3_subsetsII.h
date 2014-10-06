@@ -29,22 +29,7 @@ public:
         return res;
     }
     
-    void subsetsWithDupRe_1(vector<int> &S, int step, vector<int> &output, vector<vector<int>> &result) {
-        for (int i = step; i < S.size(); ++i) {
-            output.push_back(S[i]);
-            result.push_back(output);
-            if (i < S.size() - 1) {
-                subsetsWithDupRe_1(S, i+1, output, result);
-            }
-            output.pop_back();
-            while(i < S.size() -1 && S[i]==S[i+1]) {
-                i++;
-            }
-        }
-        return;
-    }
-    
-    void subsetsWithDupRe_2(vector<int> &S, int begin, vector<int> &output, vector<vector<int>> &result) {
+    void subsetsWithDupRe_1(vector<int> &S, int begin, vector<int> &output, vector<vector<int>> &result) {
         for (int i = begin; i < S.size(); ++i) {
             if (i != begin && S[i] == S[i-1]) {
                 continue;
@@ -63,5 +48,18 @@ public:
         return;
     }
     
-    
+    void subsetsWithDupRe_2(vector<int> &S, int step, vector<int> &output, vector<vector<int>> &result) {
+        for (int i = step; i < S.size(); ++i) {
+            output.push_back(S[i]);
+            result.push_back(output);
+            if (i < S.size() - 1) {
+                subsetsWithDupRe_1(S, i+1, output, result);
+            }
+            output.pop_back();
+            while(i < S.size() -1 && S[i]==S[i+1]) {
+                i++;
+            }
+        }
+        return;
+    }
 };

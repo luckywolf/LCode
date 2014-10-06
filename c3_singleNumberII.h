@@ -8,6 +8,19 @@ Your algorithm should have a linear runtime complexity. Could you implement it w
 */
 class Solution {
 public:
+// Count each bit without bit vector 
+    int singleNumber_2(int A[], int n) {
+        int res = 0;
+        for (int j = 0; j < 32; ++j) {
+            int bit = 0;
+            for (int i = 0; i < n; ++i) {
+                bit += (A[i] & (1 << j)) >> j;
+            }
+            res |= (bit % 3) << j;
+        }
+        return res;
+    }
+
 // Count each bit with bit vector, O(1) space
     int singleNumber_1(int A[], int n) {
         int bits[32] = {0};
@@ -23,18 +36,7 @@ public:
         }
         return res;
     }
-// Count each bit without bit vector 
-    int singleNumber_2(int A[], int n) {
-        int res = 0;
-        for (int j = 0; j < 32; ++j) {
-            int bit = 0;
-            for (int i = 0; i < n; ++i) {
-                bit += (A[i] & (1 << j)) >> j;
-            }
-            res |= (bit % 3) << j;
-        }
-        return res;
-    }
+
 // Count each bit without bit vector, optimized
     int singleNumber_3(int A[], int n) {
         int res = 0;

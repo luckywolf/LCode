@@ -1,7 +1,7 @@
 /*
 https://oj.leetcode.com/problems/path-sum-ii/
 
-mple:
+example:
 Given the below binary tree and sum = 22,
               5
              / \
@@ -42,7 +42,7 @@ public:
             if (sum == root->val) {
                 output.push_back(root->val);
                 result.push_back(output);
-                output.pop_backa(); // important, be cautious
+                output.pop_back(); // important, be cautious
             }
             return;
         }

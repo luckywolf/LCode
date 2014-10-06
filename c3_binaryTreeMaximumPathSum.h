@@ -42,7 +42,6 @@ public:
     
     void maxPathSumRe_1(TreeNode *root, int &cSum, int &maxSum) {
         if (!root) {
-            cSum = 0;
             return;
         }
         int lSum = 0, rSum = 0;

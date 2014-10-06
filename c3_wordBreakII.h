@@ -1,7 +1,8 @@
 /*
 https://oj.leetcode.com/problems/word-break-ii/
 
-Given a string s and a dictionary of words dict, add spaces in s to construct a sentence where each word is a valid dictionary word.
+Given a string s and a dictionary of words dict, add spaces in s to construct a sentence 
+where each word is a valid dictionary word.
 
 Return all such possible sentences.
 
@@ -22,6 +23,7 @@ public:
         return res;
     }
     
+// DP to do pruning, possible[i]: if substring s[i], ... s[n-1] can be broken
     void wordBreakRe(string &s, unordered_set<string> &dict, int start,
                      string output, vector<string> &result, vector<bool> &possible) {
         if (start == s.size()) {

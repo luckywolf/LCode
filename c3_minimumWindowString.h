@@ -25,7 +25,7 @@ public:
             need[T[i]]++;
         }
         
-        int minStart = -1, minEnd = n, counter  = 0                                                                                     ;
+        int minStart = -1, minEnd = n, counter  = 0;
         for (int left = 0, right = 0; right < n; right++) {
             if (need[S[right]] == 0) {
                 continue;
@@ -35,7 +35,7 @@ public:
             }
             found[S[right]]++;
             // move left pointer
-            if (counter == m) {
+            if (counter == m) { // found all needed characters
                 for (; left < right; ++left) {
                     if (need[S[left]] == 0) {
                         continue;

@@ -13,13 +13,10 @@ Note: The sequence of integers will be represented as a string.
 */
 class Solution {
 public:
-    // first try
+    // regular code
     string countAndSay_1(int n) {
         string res = "1";
-        if (n == 1) {
-            return res;
-        }
-        for (int i = 1; i < n; ++i) {
+        for (int i = 2; i <= n; ++i) {
             stringstream temp;
             int counter = 1;
             for (int j = 1; j < res.size(); j++) {
