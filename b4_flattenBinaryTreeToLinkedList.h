@@ -39,25 +39,7 @@ If you notice carefully in the flattened tree, each node's right child points to
  */
 class Solution {
 public:
-// solution 1: top-down O(nlgn)
-    void flatten_1(TreeNode *root) {
-        if (!root) {
-            return;
-        }
-        if (root->left) {
-            TreeNode *rightmost = root->left;
-            while (rightmost->right) {
-                rightmost = rightmost->right;
-            }
-            TreeNode *right = root->right;
-            root->right = root->left;
-            root->left = NULL;
-            rightmost->right = right;
-        }
-        flatten(root->right);
-    }
-
-// solution 2: bottom-up O(n) 
+// solution 1: bottom-up O(n) 
     void flatten_2(TreeNode *root) {
         TreeNode *end = NULL;
         flattenRe(root, end);
@@ -77,7 +59,25 @@ public:
         }
         end = rend ? rend : (lend ? lend : root);
     }
-    
+
+// solution 2: top-down O(nlgn)
+    void flatten_2(TreeNode *root) {
+        if (!root) {
+            return;
+        }
+        if (root->left) {
+            TreeNode *rightmost = root->left;
+            while (rightmost->right) {
+                rightmost = rightmost->right;
+            }
+            TreeNode *right = root->right;
+            root->right = root->left;
+            root->left = NULL;
+            rightmost->right = right;
+        }
+        flatten_2(root->right);
+    }
+
 // solution 3: iterative  O(nlgn) 
     void flatten(TreeNode *root) {
         if (!root) {

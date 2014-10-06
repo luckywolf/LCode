@@ -28,21 +28,19 @@ public:
         if (start > end) {
             return NULL;
         }
-        int mid = start + (end - start+1) / 2;
+        int mid = start + (end - start) / 2;
         TreeNode *leftChild = convertToBST(head, start, mid-1);
         TreeNode *parent = new TreeNode(head->val);
         parent->left = leftChild;
         head = head->next;
-        TreeNode *rightChild = convertToBST(head, mid+1, end);
-        parent->right = rightChild;
+        parent->right = convertToBST(head, mid+1, end);
         return parent;
     }
 
     TreeNode *sortedListToBST(ListNode *head) {
         int n = 0;
-        ListNode dummy(0), *cur = &dummy;
-        dummy.next = head;
-        while (cur->next) {
+        ListNode *cur = head;
+        while (cur) {
             n++;
             cur = cur->next;
         }

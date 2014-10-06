@@ -42,13 +42,14 @@ public:
     ListNode *swapPairs(ListNode *head) {
         ListNode dummy(0), *pre = &dummy;
         dummy.next = head;
-        while (pre->next && pre->next->next) {
-            ListNode *first = pre->next;
+        ListNode *first = pre->next;
+        while (first && first->next) {
             ListNode *second = first->next;
             first->next = second->next;
             second->next = first;
             pre->next = second;
             pre = first;
+            first =  first->next;
         }
         return dummy.next;
     }

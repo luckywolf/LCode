@@ -1,8 +1,8 @@
 /*
 https://oj.leetcode.com/problems/reorder-list/
 
-Given a singly linked list L: L0¡úL1¡ú¡­¡úLn-1¡úLn,
-reorder it to: L0¡úLn¡úL1¡úLn-1¡úL2¡úLn-2¡ú¡­
+Given a singly linked list L: L0->L1->...->Ln-1->Ln,
+reorder it to: L0->Ln->L1->Ln-1->L2->Ln-2¡ú...
 
 You must do this in-place without altering the nodes' values.
 
@@ -57,7 +57,7 @@ public:
     
 // two pointers
     void reorderList(ListNode *head){
-        if (!head || !head->next) {
+        if (!head || !head->next) { // be cautious, possible bugs
             return;
         }
         ListNode *slow = head, *fast = head->next;
@@ -65,18 +65,19 @@ public:
             slow = slow->next;
             fast = fast->next->next;
         }
-        ListNode *cur = slow->next;
-        slow->next = NULL;
-        ListNode *second = NULL;
+        // the first node in the 2nd half (the middle node is in the first half if odd nodes)
+        ListNode *cur = slow->next; 
+        slow->next = NULL; // be cautious, possible bugs
+        ListNode *second = NULL;  // concise code
         while (cur) {
             ListNode *temp = cur->next;
-            cur->next = second;
+            cur->next = second; // concise code
             second = cur;
             cur = temp;
         }
         ListNode *first = head;
-        while (second && first != second) {
-            ListNode *temp = second->next;
+        while (second) { // the middle node is in the first half if odd nodes
+            ListNode *temp = second->next; // concise code
             second->next = first->next;
             first->next = second;
             first = second->next;

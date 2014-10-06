@@ -5,8 +5,40 @@ Divide two integers without using multiplication, division and mod operator.
 */
 class Solution {
 public:
-// use long long and <<
+// use unsigned int without extra space
     int divide_1(int dividend, int divisor) {
+        assert(divisor != 0);
+        if (dividend == 0) {
+            return 0;
+        }
+        bool positive = dividend > 0 && divisor > 0 ||
+                    dividend < 0 && divisor < 0;
+        unsigned int divd = abs(dividend); // be cautious, unsigned int
+        unsigned int divs = abs(divisor); // be cautious, unsigned int
+        int res = 0;
+        if (divd >= divs) {
+            unsigned int tempdivs = divs; // be cautious, unsigned int
+            int i = 1;
+            // while ( (tempdivs << 1) > 0 && (tempdivs << 1) <= divd) { // this code is also correct
+            while (tempdivs <= (divd >> 1)) { // be cautious, <=
+                tempdivs <<= 1;
+                i <<= 1;
+            }
+            res += i;
+            divd -= tempdivs;
+            while (divd >= divs) { // be cautious, >=
+                tempdivs >>= 1;
+                i >>= 1;
+                if (divd >= tempdivs) { // be cautious, >=
+                    res += i;
+                    divd -= tempdivs;
+                }
+            }
+        }
+        return positive ? res: -res;
+    }  
+// use long long and <<
+    int divide_2(int dividend, int divisor) {
         if (dividend == 0) {
             return 0;
         }
@@ -29,7 +61,7 @@ public:
     }
 
 // use unsigned int and extra space
-    int divide(int dividend, int divisor) {
+    int divide_3(int dividend, int divisor) {
         if (dividend  == 0) {
             return 0;
         }
@@ -53,10 +85,10 @@ public:
             i--;
         }
         return flag ? res : -res;
-    }
-    
+    }  
+
     // second round
-    int divide_3(int dividend, int divisor) {
+    int divide_4(int dividend, int divisor) {
         assert(divisor != 0);
         if (dividend == 0) {
             return 0;
@@ -87,41 +119,10 @@ public:
         }
         return positive ? res: -res;
     }
+ 
     
     // rewrite
-    int divide_4(int dividend, int divisor) {
-        assert(divisor != 0);
-        if (dividend == 0) {
-            return 0;
-        }
-        bool positive = dividend > 0 && divisor > 0 ||
-                    dividend < 0 && divisor < 0;
-        unsigned int divd = abs(dividend);
-        unsigned int divs = abs(divisor);
-        int res = 0;
-        if (divd >= divs) {
-            int temp = 1;
-            unsigned int tempdivs = divs;
-            while ( (tempdivs << 1) > 0 && (tempdivs << 1) <= divd) {
-                tempdivs <<= 1;
-                temp <<= 1;
-            }
-            res += temp;
-            divd -= tempdivs;
-            while(divd >= divs) {
-                tempdivs >>= 1;
-                temp >>= 1;
-                if (divd >= tempdivs) {
-                    res += temp;
-                    divd -= tempdivs;
-                }
-            }
-        }
-        return positive ? res: -res;
-    }
-    
-    // rewrite
-    int divide(int dividend, int divisor) {
+    int divide_5(int dividend, int divisor) {
         assert(divisor != 0);
         if (dividend  == 0) {
             return 0;
@@ -147,7 +148,6 @@ public:
             i--;
         }
         return flag ? res : -res;
-    }
-        
+    }   
     
 };

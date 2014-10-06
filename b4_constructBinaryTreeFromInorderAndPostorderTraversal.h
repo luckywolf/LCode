@@ -31,7 +31,7 @@ public:
     
     TreeNode *buildTreeRe_1(vector<int> &inorder, vector<int> &postorder, unordered_map<int, int> &iMap,
                           int istart, int pstart, int size){
-        if (size < 1) {
+        if (size < 1) { // be cautious, possible bugs
             return NULL;
         }
         int rootIndex = iMap[postorder[pstart+size-1]];

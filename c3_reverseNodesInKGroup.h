@@ -51,27 +51,28 @@ public:
     // second round
     ListNode *reverseKGroup(ListNode *head, int k) {
         assert(k > 0);
-        if (k == 1 || !head) {
+        if (k == 1 || !head) { // k == 1, possible bugs
             return head;
         }
         ListNode dummy(0), *pre = &dummy;
         dummy.next = head;
         while (pre->next) {
             ListNode *last = pre;
-            int origK = k;
-            while (origK && last->next) {
-                origK--;
+            int m = k;
+            // possible bugs : while (m-- && last->next) is wrong
+            while (last->next && m--) {
                 last = last->next;
             }
-            if (origK > 0) {
+            if (m > 0) {
                 break;
             }
-            ListNode *first = pre->next; 
+            ListNode *first = pre->next; // possible bugs
             while (pre->next != last) {
                 ListNode *cur = pre->next;
                 pre->next = cur->next;
                 cur->next = last->next;
-                last->next = cur;
+                last->next = cur; 
+                // possible bugs, last doesn't need to be updated, 
             }
             pre = first;
         }
