@@ -157,3 +157,36 @@ public:
 9 skip white space
 10 return false if string is empty now, otherwise return true.
 */
+
+bool isNumber(const char *s) 
+    {
+        if (!s) return false;
+        s = skipSpace(s);
+        if (*s == '+' || *s == '-')
+        {
+            ++s;
+        }
+        int n1 = getNumDigits(s);
+        s += n1;
+        if (*s == '.')
+        {
+            ++s;
+        }
+        int n2 = getNumDigits(s);
+        if (n1 + n2 == 0) return false;
+        s += n2;
+        if (*s == 'E' || *s == 'e')
+        {
+            ++s;
+            if (*s == '+' || *s == '-')
+            {
+                ++s;
+            }
+            int n3 = getNumDigits(s);
+            if (n2 == 0) return false;
+            s += n3;
+        }
+        s = skipSpace(s);
+        return *s == '\0';
+    }
+
