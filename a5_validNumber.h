@@ -183,7 +183,7 @@ bool isNumber(const char *s)
                 ++s;
             }
             int n3 = getNumDigits(s);
-            if (n2 == 0) return false;
+            if (n3 == 0) return false;
             s += n3;
         }
         s = skipSpace(s);
