@@ -1,7 +1,9 @@
 /*
 https://oj.leetcode.com/problems/longest-substring-without-repeating-characters/
 
-Given a string, find the length of the longest substring without repeating characters. For example, the longest substring without repeating letters for "abcabcbb" is "abc", which the length is 3. For "bbbbb" the longest substring is "b", with the length of 1.
+Given a string, find the length of the longest substring without repeating characters. 
+For example, the longest substring without repeating letters for "abcabcbb" is "abc", 
+which the length is 3. For "bbbbb" the longest substring is "b", with the length of 1.
 */
 class Solution {
 public:
@@ -33,7 +35,7 @@ public:
         bool exists[256] = {false};
         int head = 0, tail = 0, n = s.size();
         int res = 0;
-        while (tail < n && head + resv- 1 < n) {
+        while (tail < n && head + res - 1 < n) {
             if (!exists[s[tail]]) {
                 exists[s[tail++]] = true;
             } else {

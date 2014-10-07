@@ -3,7 +3,9 @@ https://oj.leetcode.com/problems/distinct-subsequences/
 
 Given a string S and a string T, count the number of distinct subsequences of T in S.
 
-A subsequence of a string is a new string which is formed from the original string by deleting some (can be none) of the characters without disturbing the relative positions of the remaining characters. (ie, "ACE" is a subsequence of "ABCDE" while "AEC" is not).
+A subsequence of a string is a new string which is formed from the original string by deleting some 
+(can be none) of the characters without disturbing the relative positions of the remaining characters. 
+(ie, "ACE" is a subsequence of "ABCDE" while "AEC" is not).
 
 Here is an example:
 S = "rabbbit", T = "rabbit"
@@ -33,6 +35,7 @@ public:
         }
         return matches[m-1][n-1];
     }
+
 // Natual recursive, just for fun, TLE
 /* 每次递归调用f(S, T)使用如下方法处理（假设S长度为n，T长度为m）：
     找出T[0]在S中的第一个位置i，则f(S, T) = f(S[i+1:n], T[1:m])
