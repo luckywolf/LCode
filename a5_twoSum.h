@@ -45,7 +45,7 @@ public:
         return ret;
     }
     
-    // Solution 2: use hashtable (unordered_map in C++), expectedL O(n)
+    // Solution 2: use hashtable (unordered_map in C++), expected: O(n)
     
     typedef unordered_map<int, vector<int>> MAP;
     

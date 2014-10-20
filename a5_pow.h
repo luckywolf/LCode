@@ -46,7 +46,7 @@ public:
         unsigned int m = abs(n);
         double res = 1.0;
         for (; m; x *= x, m >>= 1) {
-            if (m & 1) {
+            if (m & 0x1) {
                 res *= x; 
             }
         }

@@ -143,51 +143,63 @@ public:
         }
         return *s == '\0';
     }
-};
+    
+    /** Optimized
+     * 1 skip white spaces
+     * 2 skip  + or - if there is one.
+     * 3 skip all numeric digits, say n1 digits are skipped.
+     * 4 skip . if there is one
+     * 5 same as step 3, but save count to n2.
+     * 6 here is the key part, return false if n1 + n2 == 0.
+     * 7 skip E or e if there is one.
+     * 8 if there is e or E, do step 2 and 3, return false if n1 == 0
+     * 9 skip white space
+     * 10 return false if string is empty now, otherwise return true.
+     */
+    void skipSpace(const char *&s) {
+        while (*s == ' ') {
+            s++; 
+        }
+    }
 
-/*
-说一下思路吧，懒得写代码
-1 skip white spaces
-2 skip  + or - if there is one.
-3 skip all numeric digits, say n1 digits are skipped.
-4 skip . if there is one
-5 same as step 3, but save count to n2.
-6 here is the key part, return false if n1 + n2 == 0.
-7. Skip E or e if there is one.
-8  if there is e or E, do step 2 and 3, return false if n1 == 0
-9 skip white space
-10 return false if string is empty now, otherwise return true.
-*/
+    int getNumDigits(const char *&s) {
+        int res = 0;
+        while (isdigit(*s)) {
+            s++;
+            res++;
+        }
+        return res;
+    }
 
-bool isNumber(const char *s) 
-    {
-        if (!s) return false;
-        s = skipSpace(s);
-        if (*s == '+' || *s == '-')
-        {
+    bool isNumber(const char *s) {
+        if (!s) {
+            return false;
+        }
+        skipSpace(s);
+        if (*s == '+' || *s == '-') {
             ++s;
         }
         int n1 = getNumDigits(s);
-        s += n1;
-        if (*s == '.')
-        {
+        if (*s == '.') {
             ++s;
         }
         int n2 = getNumDigits(s);
-        if (n1 + n2 == 0) return false;
-        s += n2;
-        if (*s == 'E' || *s == 'e')
-        {
+        if (n1 + n2 == 0) {
+            return false;
+        }
+        if (*s == 'E' || *s == 'e') {
             ++s;
-            if (*s == '+' || *s == '-')
-            {
+            if (*s == '+' || *s == '-') {
                 ++s;
             }
             int n3 = getNumDigits(s);
-            if (n3 == 0) return false;
-            s += n3;
+            if (n3 == 0) {
+                return false;
+            }
         }
-        s = skipSpace(s);
+        skipSpace(s);
         return *s == '\0';
     }
+};
+
 

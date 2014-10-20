@@ -46,7 +46,7 @@ public:
                 newInterval.end = max(newInterval.end, intervals[i].end);
             }
         }
-        if (!inserted) {
+        if (!inserted) { // Be cautious here, possible bugs
             res.push_back(newInterval);
         }
         return res;

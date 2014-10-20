@@ -38,12 +38,12 @@ public class Solution {
             i++;
         }
         boolean positive = true;
-            if (str.charAt(i) == '+') {
-                i++;
-            } else if (str.charAt(i) == '-') {
-                i++;
-                positive = false;
-            }
+        if (str.charAt(i) == '+') {
+            i++;
+        } else if (str.charAt(i) == '-') {
+            i++;
+            positive = false;
+        }
         while (i < str.length() && Character.isDigit(str.charAt(i)) ) {   
             if (Integer.MAX_VALUE / 10 < res || 
                 Integer.MAX_VALUE / 10 == res && Integer.MAX_VALUE % 10 < str.charAt(i) - '0') {
