@@ -30,13 +30,13 @@ public:
 
 // DP, space O(1)
     int climbStairs(int n) {
-        int last = 1, lastlast = 1;
+        int cur = 1, last = 1;
         for (int i = 2; i <= n; ++i) {
-            int step = last + lastlast;
-            lastlast = last;
-            last = step;
+            int temp = cur + last;
+            last = cur;
+            cur = temp;
         }
-        return last;
+        return cur;
     }
     
 };
