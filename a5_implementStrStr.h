@@ -7,7 +7,7 @@ Returns a pointer to the first occurrence of needle in haystack, or null if need
 */
 class Solution {
 public:
-    // first try
+    // with advanced pointer O((n-m+1)m)
     char *strStr_1(char *haystack, char *needle) {
         if (needle == NULL || *needle == '\0') {
             return haystack;
@@ -41,7 +41,7 @@ public:
         return NULL;
     }
     
-    // optimized and without the advanced pointer
+    // optimized and without the advanced pointer, O(nm)
     char *strStr_2(char *haystack, char *needle) {
         while (haystack != '\0') {
             char *h = haystack, *n = needle;
