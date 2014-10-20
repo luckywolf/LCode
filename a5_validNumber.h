@@ -153,9 +153,9 @@ public:
      * 5 same as step 3, but save count to n2.
      * 6 here is the key part, return false if n1 + n2 == 0.
      * 7 skip E or e if there is one.
-     * 8 if there is e or E, do step 2 and 3, return false if n1 == 0
+     * 8 if there is e or E, do step 2 and 3, return false if n3 == 0
      * 9 skip white space
-     * 10 return false if string is empty now, otherwise return true.
+     * 10 return false if string is not empty now, otherwise return true.
      */
     void skipSpace(const char *&s) {
         while (*s == ' ') {

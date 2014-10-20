@@ -7,7 +7,7 @@ The brackets must close in the correct order, "()" and "()[]{}" are all valid bu
 */
 class Solution {
 public:
-    // first try
+    // optimzied concise code
     bool isValid_1(string s) {
         stack<char> par;
         int n = s.size();
@@ -27,10 +27,10 @@ public:
                 }
             }
         }
-        return par.empty();
+        return par.empty(); // possible bugs
     }
     
-    // second try
+    // use switch clause
     bool isValid(string s) {
         stack<char> par;
         for (int i = 0; i < s.size(); ++i) {

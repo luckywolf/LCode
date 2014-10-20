@@ -21,13 +21,9 @@ confused what "{1,#,2,3}" means? > read more on how binary tree is serialized on
  */
 class Solution {
 public:
-// solution 1: recursive, use lower and upper bounds
+// solution 1: top-down recursive, use lower and upper bounds
     bool isValidBST_1(TreeNode *root) {
-        if (!root) {
-            return true;
-        } else {
-            return isValidBSTRe_1(root, INT_MIN, INT_MAX);
-        }
+        return isValidBSTRe_1(root, INT_MIN, INT_MAX);
     }
     
     bool isValidBSTRe_1(TreeNode *root, int lower, int upper) {
@@ -42,11 +38,8 @@ public:
         }
     }
 
-// solution 2: recursive, inorder traversal
+// solution 2: bottom-up recursive, inorder traversal
     bool isValidBST(TreeNode *root) {
-        if (!root) {
-            return true;
-        }
         int prev = INT_MIN;
         return isValidBSTRe(root, prev);
     }
