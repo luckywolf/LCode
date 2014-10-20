@@ -14,6 +14,7 @@ up front before implementing one.
 */
 class Solution {
 public:
+    // automaton
     bool isNumber_1(const char *s) {
         enum InputType {
             INVALID,    // 0
@@ -66,7 +67,7 @@ public:
         return state == 1 || state == 4 || state == 7 || state == 8;
     }
     
-    // second round
+    // regular algorithm
     bool isNumber(const char *s) {
         if (!s) {
             return false;
@@ -144,7 +145,7 @@ public:
         return *s == '\0';
     }
     
-    /** Optimized
+    /** Optimized regular algorithm
      * 1 skip white spaces
      * 2 skip  + or - if there is one.
      * 3 skip all numeric digits, say n1 digits are skipped.
