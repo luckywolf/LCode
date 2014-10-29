@@ -29,7 +29,7 @@ public:
     }
     
     // optimized
-    void merge(int A[], int m, int B[], int n) {
+    void merge_2(int A[], int m, int B[], int n) {
         int i = m+n-1, j = m-1, k = n-1;
         while (j >= 0 && k >= 0) {
             if (A[j] < B[k]) {
@@ -43,34 +43,12 @@ public:
         }
     }
     
-        // second round
+   // even more optimized
     void merge_3(int A[], int m, int B[], int n) {
         assert(m >= 0 && n >= 0);
-        if (n == 0) {
-            return;
-        }
-        int i = m - 1, j = n - 1, k = m + n - 1;
-        while (i >= 0 && j >= 0) {
-            if (A[i] > B[j]) {
-                A[k--] = A[i--];
-            } else {
-                A[k--] = B[j--];
-            }
-        }
-        while (j >= 0) {
-            A[k--] = B[j--];
-        }
-    }
-    
-    // third round
-    void merge(int A[], int m, int B[], int n) {
-        assert(m >= 0 && n >= 0);
-        if (n == 0) {
-            return;
-        }
-        int i = m - 1, j = n - 1, k = m + n - 1;
-        while (j >= 0) {
-            if (i >= 0 && A[i] > B[j]) {
+        int k = m+n-1, i = m-1, j = n-1;
+        while (j >= 0) { // if B does not run out
+            if (i >=0 && A[i] > B[j]) {
                 A[k--] = A[i--];
             } else {
                 A[k--] = B[j--];
