@@ -12,7 +12,7 @@ class Solution {
 public:
     bool search(int A[], int n, int target) {
         int start = 0, end  = n-1;
-        while (start <= end) {
+        while (start <= end) { // because it may not find the target, <= instead of < is used.
             int mid = start + (end - start) / 2;
             if (A[mid] == target) {
                 return true;
