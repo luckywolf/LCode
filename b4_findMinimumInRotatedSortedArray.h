@@ -26,7 +26,9 @@ public:
     int findMin(vector<int> &num) {
         int n = num.size();
         int left = 0, right = n - 1;
-        while (left < right && num[left] > num[right]) {
+        // because there always exists a solution, "left < right" instead of "left <= right" is used
+        // because there are not duplciated elements, num[left] >= num[right] is not needed
+        while (left < right && num[left] > num[right]) { 
             int mid = left + (right - left) / 2;
             if (num[mid] > num[right]) {
                 left = mid + 1;
