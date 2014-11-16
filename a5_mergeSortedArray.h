@@ -30,16 +30,16 @@ public:
     
     // optimized
     void merge_2(int A[], int m, int B[], int n) {
-        int i = m+n-1, j = m-1, k = n-1;
-        while (j >= 0 && k >= 0) {
-            if (A[j] < B[k]) {
-                A[i--] = B[k--];
+        int k = m+n-1, i = m-1, j = n-1;
+        while (i >= 0 && j >= 0) {
+            if (A[i] < B[j]) {
+                A[k--] = B[j--];
             } else {
-                A[i--] = A[j--];
+                A[k--] = A[i--];
             }
         }
-        while (k >= 0) {
-            A[i--] = B[k--];
+        while (j >= 0) {
+            A[k--] = B[j--];
         }
     }
     
