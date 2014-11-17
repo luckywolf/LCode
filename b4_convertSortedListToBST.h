@@ -24,6 +24,7 @@ class Solution {
 public:
     // http://leetcode.com/2010/11/convert-sorted-list-to-balanced-binary.html
     // pay attention to *&
+    // bottom up solution
     TreeNode *convertToBST(ListNode *&head, int start, int end) {
         if (start > end) {
             return NULL;
