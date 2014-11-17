@@ -121,7 +121,7 @@ public:
     }
  
     
-    // rewrite
+    // optimized
     int divide_5(int dividend, int divisor) {
         assert(divisor != 0);
         if (dividend  == 0) {
