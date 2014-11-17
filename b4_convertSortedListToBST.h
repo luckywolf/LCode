@@ -26,7 +26,7 @@ public:
     // pay attention to *&
     // bottom up solution
     TreeNode *convertToBST(ListNode *&head, int start, int end) {
-        if (start > end) {
+        if (start > end) { // be cautious, possible bugs
             return NULL;
         }
         int mid = start + (end - start) / 2;
