@@ -17,7 +17,7 @@ You may assume that duplicates do not exist in the tree.
  */
 class Solution {
 public:
-// use a hashtable
+// use a hashtable, assumption: input are correct postorder and inorder results
  TreeNode *buildTree_1(vector<int> &inorder, vector<int> &postorder) {
         if (postorder.empty() || postorder.size() != inorder.size()) {
             return NULL;
