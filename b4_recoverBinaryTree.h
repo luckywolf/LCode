@@ -20,7 +20,7 @@ confused what "{1,#,2,3}" means? > read more on how binary tree is serialized on
  */
 class Solution {
 public:
-// solution 1, recursive O(n)
+// solution 1, top-down, recursive O(n)
     void recoverTree_1(TreeNode *root) {
         vector<TreeNode *> inorder;
         inorderTraversalRe_1(root, inorder);
@@ -45,7 +45,7 @@ public:
         inorderTraversalRe_1(root->right, result);
     }
     
-// solution 2, recursive, O(n) or O(1)?
+// solution 2, bottom-up, recursive, O(n) or O(1)?
    void recoverTree(TreeNode *root) {
        TreeNode *first = NULL, *second = NULL;
        TreeNode *prev = NULL;
