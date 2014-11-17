@@ -93,15 +93,13 @@ public:
         q.push(root);
         q.push(NULL);
         vector<int> level;
-        while (true) { // be cautious, possible bugs
+        while (!q.empty()) { // be cautious, possible bugs
             TreeNode *node = q.front();
             q.pop();
             if (!node) {
                 res.push_back(level);
                 level.clear();  // be cautious, possible bugs
-                if (q.empty()) {
-                    break;  // be cautious, possible bugs
-                } else {
+                if (!q.empty()) { // be cautious, possible bugs
                     q.push(NULL);
                 }
             } else {
