@@ -34,7 +34,7 @@ public:
         output.pop_back();
     }
     
-
+// put left first; if right > left, put right
     void generateParenthesisRe_1(int left, int right, string &output, vector<string> &result) {
         if (right == 0) {
             result.push_back(output);
