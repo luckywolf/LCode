@@ -5,7 +5,7 @@ Divide two integers without using multiplication, division and mod operator.
 */
 class Solution {
 public:
-// use unsigned int without extra space
+// optimized, use unsigned int without extra space
     int divide_1(int dividend, int divisor) {
         assert(divisor != 0);
         if (dividend == 0) {
