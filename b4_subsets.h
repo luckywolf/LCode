@@ -53,7 +53,7 @@ public:
             return res;
         }
         sort(S.begin(), S.end());
-        for (int i = 1; i <= S.size(); ++i) {
+        for (int i = 1; i <= S.size(); ++i) { // size of each subset
             sol.clear();
             subsetsRe(S, i, 0, sol, res);
         }
