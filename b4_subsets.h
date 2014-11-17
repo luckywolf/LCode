@@ -22,7 +22,7 @@ If S = [1,2,3], a solution is:
 */
 class Solution {
 public:
-public:
+// solution 1: create subsets directly
     vector<vector<int> > subsets(vector<int> &S) {
         vector<vector<int>> res;
         vector<int> output;
@@ -44,7 +44,7 @@ public:
         }
     }
     
-    // second round
+    // solution 2: use combination
     vector<vector<int> > subsets_2(vector<int> &S) {
         vector<vector<int>> res;
         vector<int> sol;
