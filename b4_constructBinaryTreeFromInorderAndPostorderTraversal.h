@@ -42,7 +42,6 @@ public:
         return root;
     }
 
-
 // recusive, optimized, use iterator as parameters
     TreeNode *buildTree_2(vector<int> &inorder, vector<int> &postorder) {
         if (inorder.size() != postorder.size()) {
